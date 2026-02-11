@@ -138,6 +138,7 @@
             <!-- Trip Card 4 -->
             <div class="trip-card" onclick="openModal('river')">
                 <div class="trip-image">
+                    <img src="assets/images/adventures_images/07.jpg" alt="Summit Challenge" />
                     <div class="difficulty-badge difficulty-easy">Easy</div>
                 </div>
                 <div class="trip-content">
@@ -160,6 +161,7 @@
             <!-- Trip Card 5 -->
             <div class="trip-card" onclick="openModal('wilderness')">
                 <div class="trip-image">
+                      <img src="assets/images/adventures_images/06.jpg" alt="Summit Challenge" />
                     <div class="difficulty-badge difficulty-moderate">Moderate</div>
                 </div>
                 <div class="trip-content">
@@ -182,6 +184,7 @@
             <!-- Trip Card 6 -->
             <div class="trip-card" onclick="openModal('glacier')">
                 <div class="trip-image">
+                      <img src="assets/images/adventures_images/05.jpg" alt="Summit Challenge" />
                     <div class="difficulty-badge difficulty-hard">Hard</div>
                 </div>
                 <div class="trip-content">
@@ -238,7 +241,9 @@
                     </div>
                 </div>
             </div>
-            <div class="about-image"></div>
+            <div class="about-image">
+                  <img src="assets/images/gallery/04.jpg" alt="Summit Challenge" />
+            </div>
         </div>
     </section>
 
@@ -301,14 +306,30 @@
         <p class="section-subtitle">Memories from the trail</p>
 
         <div class="gallery-grid">
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
-            <div class="gallery-item"></div>
+            <div class="gallery-item">
+                  <img src="assets/images/gallery/01.jpg" alt="Summit Challenge" />
+            </div>
+            <div class="gallery-item">
+                  <img src="assets/images/gallery/02.jpg" alt="Summit Challenge" />
+            </div>
+            <div class="gallery-item">
+                  <img src="assets/images/gallery/03.jpg" alt="Summit Challenge" />
+            </div>
+            <div class="gallery-item">
+                  <img src="assets/images/gallery/04.jpg" alt="Summit Challenge" />
+            </div>
+            <div class="gallery-item">
+                  <img src="assets/images/gallery/05.jpg" alt="Summit Challenge" />
+            </div>
+            <div class="gallery-item">
+                  <img src="assets/images/gallery/06.jpg" alt="Summit Challenge" />
+            </div>
+            <div class="gallery-item">
+                  <img src="assets/images/gallery/07.jpg" alt="Summit Challenge" />
+            </div>
+            <div class="gallery-item">
+                  <img src="assets/images/gallery/08.jpg" alt="Summit Challenge" />
+            </div>
         </div>
     </section>
 
