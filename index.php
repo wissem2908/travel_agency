@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/lightgallery@2.9.0/css/lightgallery-bundle.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 
@@ -161,7 +162,7 @@
             <!-- Trip Card 5 -->
             <div class="trip-card" onclick="openModal('wilderness')">
                 <div class="trip-image">
-                      <img src="assets/images/adventures_images/06.jpg" alt="Summit Challenge" />
+                    <img src="assets/images/adventures_images/06.jpg" alt="Summit Challenge" />
                     <div class="difficulty-badge difficulty-moderate">Moderate</div>
                 </div>
                 <div class="trip-content">
@@ -184,7 +185,7 @@
             <!-- Trip Card 6 -->
             <div class="trip-card" onclick="openModal('glacier')">
                 <div class="trip-image">
-                      <img src="assets/images/adventures_images/05.jpg" alt="Summit Challenge" />
+                    <img src="assets/images/adventures_images/05.jpg" alt="Summit Challenge" />
                     <div class="difficulty-badge difficulty-hard">Hard</div>
                 </div>
                 <div class="trip-content">
@@ -242,7 +243,7 @@
                 </div>
             </div>
             <div class="about-image">
-                  <img src="assets/images/gallery/04.jpg" alt="Summit Challenge" />
+                <img src="assets/images/gallery/04.jpg" alt="Summit Challenge" />
             </div>
         </div>
     </section>
@@ -304,34 +305,51 @@
     <section id="gallery" class="gallery-section">
         <h2 class="section-title">Captured Moments</h2>
         <p class="section-subtitle">Memories from the trail</p>
-
-        <div class="gallery-grid">
-            <div class="gallery-item">
-                  <img src="assets/images/gallery/01.jpg" alt="Summit Challenge" />
-            </div>
-            <div class="gallery-item">
-                  <img src="assets/images/gallery/02.jpg" alt="Summit Challenge" />
-            </div>
-            <div class="gallery-item">
-                  <img src="assets/images/gallery/03.jpg" alt="Summit Challenge" />
-            </div>
-            <div class="gallery-item">
-                  <img src="assets/images/gallery/04.jpg" alt="Summit Challenge" />
-            </div>
-            <div class="gallery-item">
-                  <img src="assets/images/gallery/05.jpg" alt="Summit Challenge" />
-            </div>
-            <div class="gallery-item">
-                  <img src="assets/images/gallery/06.jpg" alt="Summit Challenge" />
-            </div>
-            <div class="gallery-item">
-                  <img src="assets/images/gallery/07.jpg" alt="Summit Challenge" />
-            </div>
-            <div class="gallery-item">
-                  <img src="assets/images/gallery/08.jpg" alt="Summit Challenge" />
-            </div>
+<div class="gallery-grid" id="lightgallery">
+    <a href="assets/images/gallery/01.jpg" data-lg-size="1600-2400">
+        <div class="gallery-item">
+            <img src="assets/images/gallery/01.jpg" alt="Summit Challenge" />
         </div>
+    </a>
+    <a href="assets/images/gallery/02.jpg" data-lg-size="1600-2400">
+        <div class="gallery-item">
+            <img src="assets/images/gallery/02.jpg" alt="Summit Challenge" />
+        </div>
+    </a>
+    <a href="assets/images/gallery/03.jpg" data-lg-size="1600-2400">
+        <div class="gallery-item">
+            <img src="assets/images/gallery/03.jpg" alt="Summit Challenge" />
+        </div>
+    </a>
+    <a href="assets/images/gallery/04.jpg" data-lg-size="1600-2400">
+        <div class="gallery-item">
+            <img src="assets/images/gallery/04.jpg" alt="Summit Challenge" />
+        </div>
+    </a>
+    <a href="assets/images/gallery/05.jpg" data-lg-size="1600-2400">
+        <div class="gallery-item">
+            <img src="assets/images/gallery/05.jpg" alt="Summit Challenge" />
+        </div>
+    </a>
+    <a href="assets/images/gallery/06.jpg" data-lg-size="1600-2400">
+        <div class="gallery-item">
+            <img src="assets/images/gallery/06.jpg" alt="Summit Challenge" />
+        </div>
+    </a>
+    <a href="assets/images/gallery/07.jpg" data-lg-size="1600-2400">
+        <div class="gallery-item">
+            <img src="assets/images/gallery/07.jpg" alt="Summit Challenge" />
+        </div>
+    </a>
+    <a href="assets/images/gallery/08.jpg" data-lg-size="1600-2400">
+        <div class="gallery-item">
+            <img src="assets/images/gallery/08.jpg" alt="Summit Challenge" />
+        </div>
+    </a>
+</div>
+
     </section>
+    <!-- Modal overlay -->
 
     <!-- Footer -->
     <footer id="contact" class="footer">
@@ -468,7 +486,23 @@
             </div>
         </div>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/lightgallery.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/zoom/lg-zoom.umd.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lightgallery@2.8.0/plugins/thumbnail/lg-thumbnail.umd.js"></script>
 
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    lightGallery(document.getElementById('lightgallery'), {
+        plugins: [lgZoom, lgThumbnail],
+        speed: 500,
+        zoom: true,
+        thumbnail: true,
+        download: true,
+        loop: true
+    });
+});
+</script>
     <script>
         // Create floating particles
         const particlesContainer = document.getElementById('particles');
@@ -602,5 +636,6 @@
         });
     </script>
 </body>
+
 
 </html>

@@ -1356,4 +1356,28 @@
         }
 
 
-    
+    /************************************************/
+
+#imgViewer{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background:rgba(0,0,0,0.95);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    z-index:999999;
+}
+
+#imgViewer img{
+    max-width:90%;
+    max-height:90%;
+    transform:scale(0.8);
+    transition:.3s;
+}
+
+#imgViewer.show img{
+    transform:scale(1);
+}
