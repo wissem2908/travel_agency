@@ -11,11 +11,11 @@ try {
     );
 
     // Security: admin only
-    if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
-        http_response_code(403);
-        echo json_encode([]);
-        exit;
-    }
+    // if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'admin') {
+    //     http_response_code(403);
+    //     echo json_encode([]);
+    //     exit;
+    // }
 
     // Fetch adventures from travel_agency table
     $sql = "SELECT 

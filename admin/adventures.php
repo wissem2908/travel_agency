@@ -188,6 +188,21 @@ include('includes/header.php');
 </div>
 
 
+<div class="modal" id="deleteModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Confirm Deletion</h2>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete this adventure?</p>
+        </div>
+        <div class="modal-actions">
+            <button type="button" class="btn btn-secondary" id="cancelDelete">Cancel</button>
+            <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
+        </div>
+    </div>
+</div>
+
 </main>
 </div>
 
@@ -294,6 +309,57 @@ include('includes/footer.php');
                 alert('An error occurred while adding the adventure.');
             }
         });
+    });
+
+    /************************************* delete adventure************************************** */
+  let adventureIdToDelete = null;
+
+    // Open modal on delete button click
+    $(document).on('click', '#deleteAdventure', function() {
+        adventureIdToDelete = $(this).data('id');
+        $('#deleteModal').addClass('active'); // show modal
+    });
+
+    // Cancel deletion
+    $('#cancelDelete').on('click', function() {
+        adventureIdToDelete = null;
+        $('#deleteModal').removeClass('active'); // hide modal
+    });
+
+    // Confirm deletion
+    $('#confirmDelete').on('click', function() {
+        if (adventureIdToDelete) {
+            $.ajax({
+                url: 'assets/php/adventures/delete_adventure.php',
+                method: 'POST',
+                data: { id: adventureIdToDelete },
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        alert('Adventure deleted successfully!');
+                        getAdventures(); // refresh the grid
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                    adventureIdToDelete = null;
+                    $('#deleteModal').removeClass('active'); // hide modal
+                },
+                error: function(xhr, status, error) {
+                    console.error(error);
+                    alert('An error occurred while deleting the adventure.');
+                    adventureIdToDelete = null;
+                    $('#deleteModal').removeClass('active'); // hide modal
+                }
+            });
+        }
+    });
+
+    // Optional: click outside modal to close
+    $('#deleteModal').on('click', function(e) {
+        if ($(e.target).is('#deleteModal')) {
+            adventureIdToDelete = null;
+            $(this).removeClass('active');
+        }
     });
     })
 </script>
