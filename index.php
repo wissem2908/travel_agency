@@ -460,14 +460,14 @@
                                 <label>Full Name</label>
                                 <input type="text" required placeholder="John Doe">
                             </div>
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <label>Email</label>
                                 <input type="email" required placeholder="john@example.com">
-                            </div>
-                            <div class="form-group">
+                            </div> -->
+                            <!-- <div class="form-group">
                                 <label>Trip Dates</label>
                                 <input type="date" required>
-                            </div>
+                            </div> -->
                             <div class="form-group">
                                 <label>Number of People</label>
                                 <select required>
