@@ -120,88 +120,165 @@ include('includes/header.php');
 
 
     <!-- Add Adventure Modal -->
- <div class="modal" id="adventureModal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Add New Adventure</h2>
+    <div class="modal" id="adventureModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Add New Adventure</h2>
+            </div>
+            <form id="adventureForm" enctype="multipart/form-data">
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Adventure Title</label>
+                        <input type="text" name="title" placeholder="e.g., Mountain Peak Expedition" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Price (USD)</label>
+                        <input type="number" name="price" placeholder="1200" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Duration (Days)</label>
+                        <input type="number" name="duration_days" placeholder="5" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Difficulty</label>
+                        <select name="difficulty" required>
+                            <option value="">Select difficulty</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Difficult">Difficult</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Max Participants</label>
+                        <input type="number" name="max_participants" placeholder="12" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Status</label>
+                        <select name="status" required>
+                            <option value="">Select status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                            <option value="Coming Soon">Coming Soon</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Description</label>
+                    <textarea name="description" placeholder="Enter adventure description..." required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Main Image</label>
+                    <input type="file" name="image" accept="image/*" required>
+                </div>
+
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeAdventureModal()">Cancel</button>
+                    <button type="submit" class="btn btn-success">Create Adventure</button>
+                </div>
+            </form>
         </div>
-        <form id="adventureForm" enctype="multipart/form-data">
-            <div class="form-row">
-                <div class="input-group">
-                    <label>Adventure Title</label>
-                    <input type="text" name="title" placeholder="e.g., Mountain Peak Expedition" required>
-                </div>
-                <div class="input-group">
-                    <label>Price (USD)</label>
-                    <input type="number" name="price" placeholder="1200" required>
-                </div>
-            </div>
+    </div>
 
-            <div class="form-row">
-                <div class="input-group">
-                    <label>Duration (Days)</label>
-                    <input type="number" name="duration_days" placeholder="5" required>
-                </div>
-                <div class="input-group">
-                    <label>Difficulty</label>
-                    <select name="difficulty" required>
-                        <option value="">Select difficulty</option>
-                        <option value="Easy">Easy</option>
-                        <option value="Moderate">Moderate</option>
-                        <option value="Difficult">Difficult</option>
-                    </select>
-                </div>
-            </div>
 
-            <div class="form-row">
-                <div class="input-group">
-                    <label>Max Participants</label>
-                    <input type="number" name="max_participants" placeholder="12" required>
-                </div>
-                <div class="input-group">
-                    <label>Status</label>
-                    <select name="status" required>
-                        <option value="">Select status</option>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                        <option value="Coming Soon">Coming Soon</option>
-                    </select>
-                </div>
+    <div class="modal" id="deleteModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Confirm Deletion</h2>
             </div>
-
-            <div class="input-group">
-                <label>Description</label>
-                <textarea name="description" placeholder="Enter adventure description..." required></textarea>
+            <div class="modal-body">
+                <p>Are you sure you want to delete this adventure?</p>
             </div>
-
-            <div class="input-group">
-                <label>Main Image</label>
-                <input type="file" name="image" accept="image/*" required>
-            </div>
-
             <div class="modal-actions">
-                <button type="button" class="btn btn-secondary" onclick="closeAdventureModal()">Cancel</button>
-                <button type="submit" class="btn btn-success">Create Adventure</button>
+                <button type="button" class="btn btn-secondary" id="cancelDelete">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
             </div>
-        </form>
-    </div>
-</div>
-
-
-<div class="modal" id="deleteModal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Confirm Deletion</h2>
-        </div>
-        <div class="modal-body">
-            <p>Are you sure you want to delete this adventure?</p>
-        </div>
-        <div class="modal-actions">
-            <button type="button" class="btn btn-secondary" id="cancelDelete">Cancel</button>
-            <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
         </div>
     </div>
-</div>
+
+
+    <!--            ************************************ edit adventure modal *******************************************               -->
+
+    <div class="modal" id="editAdventureModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Edit Adventure</h2>
+            </div>
+            <form id="editAdventureForm" enctype="multipart/form-data">
+                <input type="hidden" name="id" id="editAdventureId">
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Adventure Title</label>
+                        <input type="text" name="title" id="editTitle" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Price (USD)</label>
+                        <input type="number" name="price" id="editPrice" required>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Duration (Days)</label>
+                        <input type="number" name="duration_days" id="editDuration" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Difficulty</label>
+                        <select name="difficulty" id="editDifficulty" required>
+                            <option value="">Select difficulty</option>
+                            <option value="Easy">Easy</option>
+                            <option value="Moderate">Moderate</option>
+                            <option value="Difficult">Difficult</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="input-group">
+                        <label>Max Participants</label>
+                        <input type="number" name="max_participants" id="editMaxParticipants" required>
+                    </div>
+                    <div class="input-group">
+                        <label>Status</label>
+                        <select name="status" id="editStatus" required>
+                            <option value="">Select status</option>
+                            <option value="Active">Active</option>
+                            <option value="Inactive">Inactive</option>
+                            <option value="Coming Soon">Coming Soon</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <label>Description</label>
+                    <textarea name="description" id="editDescription" required></textarea>
+                </div>
+
+                <div class="input-group">
+                    <label>Change Image</label>
+                    <input type="file" name="image" id="editImage" accept="image/*">
+                </div>
+                <div class="input-group">
+                    <label>Current Image</label>
+                    <div id="currentImagePreview" style="margin-top:10px;">
+                        <img src="" alt="Current Adventure Image" style="width:150px; height:auto; border-radius:6px; object-fit:cover;" />
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn btn-secondary" onclick="closeEditAdventureModal()">Cancel</button>
+                    <button type="submit" class="btn btn-success">Update Adventure</button>
+                </div>
+            </form>
+        </div>
+    </div>
 
 </main>
 </div>
@@ -279,87 +356,166 @@ include('includes/footer.php');
 
         /************************************ add adventures ************************************************ */
 
-        
-    $('#adventureForm').on('submit', function(e) {
-        e.preventDefault(); // prevent default form submission
 
-        var formData = new FormData(this); // handle file upload
+        $('#adventureForm').on('submit', function(e) {
+            e.preventDefault(); // prevent default form submission
 
-        $.ajax({
-            url: 'assets/php/adventures/add_adventure.php', // your PHP insert script
-            type: 'POST',
-            data: formData,
-            contentType: false,
-            processData: false,
-            dataType: 'json',
-            success: function(response) {
-                if (response.success) {
-                    alert('Adventure added successfully!');
-                    $('#adventureForm')[0].reset();
-                    closeAdventureModal();
+            var formData = new FormData(this); // handle file upload
 
-                    // Optionally refresh adventures table
-                    getAdventures();
-                } else {
-                    alert('Error: ' + response.message);
-                }
-            },
-            error: function(xhr, status, error) {
-                console.error(error);
-                alert('An error occurred while adding the adventure.');
-            }
-        });
-    });
-
-    /************************************* delete adventure************************************** */
-  let adventureIdToDelete = null;
-
-    // Open modal on delete button click
-    $(document).on('click', '#deleteAdventure', function() {
-        adventureIdToDelete = $(this).data('id');
-        $('#deleteModal').addClass('active'); // show modal
-    });
-
-    // Cancel deletion
-    $('#cancelDelete').on('click', function() {
-        adventureIdToDelete = null;
-        $('#deleteModal').removeClass('active'); // hide modal
-    });
-
-    // Confirm deletion
-    $('#confirmDelete').on('click', function() {
-        if (adventureIdToDelete) {
             $.ajax({
-                url: 'assets/php/adventures/delete_adventure.php',
-                method: 'POST',
-                data: { id: adventureIdToDelete },
+                url: 'assets/php/adventures/add_adventure.php', // your PHP insert script
+                type: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
                 dataType: 'json',
                 success: function(response) {
                     if (response.success) {
-                        alert('Adventure deleted successfully!');
-                        getAdventures(); // refresh the grid
+                        alert('Adventure added successfully!');
+                        $('#adventureForm')[0].reset();
+                        closeAdventureModal();
+
+                        // Optionally refresh adventures table
+                        getAdventures();
                     } else {
                         alert('Error: ' + response.message);
                     }
-                    adventureIdToDelete = null;
-                    $('#deleteModal').removeClass('active'); // hide modal
                 },
                 error: function(xhr, status, error) {
                     console.error(error);
-                    alert('An error occurred while deleting the adventure.');
-                    adventureIdToDelete = null;
-                    $('#deleteModal').removeClass('active'); // hide modal
+                    alert('An error occurred while adding the adventure.');
                 }
             });
-        }
-    });
+        });
 
-    // Optional: click outside modal to close
-    $('#deleteModal').on('click', function(e) {
-        if ($(e.target).is('#deleteModal')) {
+        /************************************* delete adventure************************************** */
+        let adventureIdToDelete = null;
+
+        // Open modal on delete button click
+        $(document).on('click', '#deleteAdventure', function() {
+            adventureIdToDelete = $(this).data('id');
+            $('#deleteModal').addClass('active'); // show modal
+        });
+
+        // Cancel deletion
+        $('#cancelDelete').on('click', function() {
             adventureIdToDelete = null;
-            $(this).removeClass('active');
-        }
-    });
+            $('#deleteModal').removeClass('active'); // hide modal
+        });
+
+        // Confirm deletion
+        $('#confirmDelete').on('click', function() {
+            if (adventureIdToDelete) {
+                $.ajax({
+                    url: 'assets/php/adventures/delete_adventure.php',
+                    method: 'POST',
+                    data: {
+                        id: adventureIdToDelete
+                    },
+                    dataType: 'json',
+                    success: function(response) {
+                        if (response.success) {
+                            alert('Adventure deleted successfully!');
+                            getAdventures(); // refresh the grid
+                        } else {
+                            alert('Error: ' + response.message);
+                        }
+                        adventureIdToDelete = null;
+                        $('#deleteModal').removeClass('active'); // hide modal
+                    },
+                    error: function(xhr, status, error) {
+                        console.error(error);
+                        alert('An error occurred while deleting the adventure.');
+                        adventureIdToDelete = null;
+                        $('#deleteModal').removeClass('active'); // hide modal
+                    }
+                });
+            }
+        });
+
+        // Optional: click outside modal to close
+        $('#deleteModal').on('click', function(e) {
+            if ($(e.target).is('#deleteModal')) {
+                adventureIdToDelete = null;
+                $(this).removeClass('active');
+            }
+        });
+
+        /****************************************** edit adventure modal ******************************************************************* */
+
+
+        let currentEditId = null;
+
+        // Open Edit modal and prefill form
+        $(document).on('click', '#editAdventure', function() {
+            currentEditId = $(this).data('id');
+
+            // Get adventure details via AJAX
+            $.ajax({
+                url: 'assets/php/adventures/get_single_adventure.php',
+                method: 'GET',
+                data: {
+                    id: currentEditId
+                },
+                dataType: 'json',
+                success: function(data) {
+                    $('#editAdventureId').val(data.id);
+                    $('#editTitle').val(data.title);
+                    $('#editPrice').val(data.price);
+                    $('#editDuration').val(data.duration_days);
+                    $('#editDifficulty').val(data.difficulty);
+                    $('#editMaxParticipants').val(data.max_participants);
+                    $('#editStatus').val(data.status);
+                    $('#editDescription').val(data.description);
+
+                    // Show current image
+                    let imgPath = '../assets/images/adventures_images/' + data.image;
+                    $('#currentImagePreview img').attr('src', imgPath);
+
+                    $('#editAdventureModal').addClass('active');
+                },
+                error: function(err) {
+                    console.error(err);
+                    alert('Error fetching adventure data.');
+                }
+            });
+        });
+
+        // Submit edited adventure
+        $('#editAdventureForm').on('submit', function(e) {
+            e.preventDefault();
+
+            let formData = new FormData(this);
+
+            $.ajax({
+                url: 'assets/php/adventures/edit_adventure.php',
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                dataType: 'json',
+                success: function(response) {
+                    if (response.success) {
+                        alert('Adventure updated successfully!');
+                        $('#editAdventureModal').removeClass('active');
+                        getAdventures();
+                    } else {
+                        alert('Error: ' + response.message);
+                    }
+                },
+                error: function(err) {
+                    console.error(err);
+                    alert('An error occurred while updating the adventure.');
+                }
+            });
+        });
+
+        // Optional: close modal when clicking outside
+        $('#editAdventureModal').on('click', function(e) {
+            if ($(e.target).is('#editAdventureModal')) {
+                $(this).removeClass('active');
+            }
+        });
+
     })
 </script>
