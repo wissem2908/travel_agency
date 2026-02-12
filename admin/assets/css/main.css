@@ -455,7 +455,20 @@
             background: rgba(196, 82, 60, 0.15);
             color: var(--accent-red);
         }
+.badge-active {
+    background: rgba(82, 166, 117, 0.15); /* soft green background */
+    color: var(--success); /* green text */
+}
 
+.badge-inactive {
+    background: rgba(108, 117, 125, 0.15); /* soft gray background */
+    color: var(--gray-dark); /* dark gray text */
+}
+
+.badge-coming-soon {
+    background: rgba(217, 167, 56, 0.15); /* soft yellow/orange background */
+    color: var(--accent-orange); /* orange text */
+}
         /* Form Elements */
         .form-row {
             display: grid;
@@ -707,5 +720,4 @@
             }
         }
 /******************************** *************************************/
-
 

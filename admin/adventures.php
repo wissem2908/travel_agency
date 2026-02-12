@@ -280,6 +280,9 @@ include('includes/header.php');
         </div>
     </div>
 
+    <!--************************************************ view adventure modal *********************************************-->
+
+
 </main>
 </div>
 
@@ -327,6 +330,7 @@ include('includes/footer.php');
                     var adventuresGrid = ""
 
                     for (i = 0; i < data.length; i++) {
+                        let badgeClass = data[i].status.toLowerCase().replace(/\s+/g, '-');
                         adventuresGrid += `
                                <div class="adventure-card">
                                     <div class="adventure-image" style="background: url('../assets/images/adventures_images/${data[i].image}'); background-size: cover; background-position: center;"></div>
@@ -334,7 +338,7 @@ include('includes/footer.php');
                                         <h3 class="adventure-title">${data[i].title}</h3>
                                         <div class="adventure-meta">
                                             <div class="adventure-price">$${data[i].price}</div>
-                                            <span class="badge badge-${data[i].status.toLowerCase()}">${data[i].status}</span>
+                                            <span class="badge badge-${badgeClass}">${data[i].status}</span>
                                         </div>
                                         <p>${data[i].duration_days} Days • ${data[i].difficulty} • ${data[i].max_participants} Participants</p>
                                         <div class="adventure-actions">
@@ -516,6 +520,10 @@ include('includes/footer.php');
                 $(this).removeClass('active');
             }
         });
+
+
+        /***************************************************************************************** */
+
 
     })
 </script>
