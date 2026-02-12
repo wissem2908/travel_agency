@@ -1,13 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wildpath Adventures - Admin Panel</title>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Crimson+Pro:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
- <link rel="stylesheet" href="assets/css/main.css">
+    <link rel="stylesheet" href="assets/css/main.css">
 </head>
+
 <body>
+
+    <?php $currentPage = basename($_SERVER['PHP_SELF']); ?>
 
 
     <!-- Admin Layout -->
@@ -15,35 +19,56 @@
         <!-- Sidebar -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <h2>WILDPATH</h2>
-                <p>Admin Control</p>
+                <div class="brand">
+                    <div class="brand-logo">🌲</div>
+                    <div>
+                        <h2>WILDPATH</h2>
+                        <p>Admin Control</p>
+                    </div>
+                </div>
             </div>
+
             <nav class="sidebar-nav">
-                <a class="nav-item active" href="dashboard.php">
-                    <span class="nav-icon">📊</span>
-                    Dashboard
-</a>
-                <a class="nav-item" href="adventures.php">
-                    <span class="nav-icon">🏔️</span>
-                    Featured Adventures
+                <div class="nav-section">
+    <p class="nav-section-title">MAIN</p>
+                <a class="nav-item <?= ($currentPage == 'dashboard.php') ? 'active' : '' ?>" href="dashboard.php">
+                    <span class="nav-icon"><i data-lucide="layout-dashboard"></i></span>
+                    <span class="nav-text">Dashboard</span>
                 </a>
-                <a class="nav-item" href="bookings.php">
-                    <span class="nav-icon">📅</span>
-                    Bookings
+                </div>
+                <div class="nav-section">
+    <p class="nav-section-title">MANAGEMENT</p>
+                <a class="nav-item <?= ($currentPage == 'adventures.php') ? 'active' : '' ?>" href="adventures.php">
+                    <span class="nav-icon"><i data-lucide="mountain"></i></span>
+                    <span class="nav-text">Featured Adventures</span>
                 </a>
-                <a class="nav-item" href="customers.php">
-                    <span class="nav-icon">👥</span>
-                    Customers
+
+                <a class="nav-item <?= ($currentPage == 'bookings.php') ? 'active' : '' ?>" href="bookings.php">
+                    <span class="nav-icon"><i data-lucide="calendar-days"></i></span>
+                    <span class="nav-text">Bookings</span>
                 </a>
-                <a class="nav-item" href="analytics.php">
-                    <span class="nav-icon">📈</span>
-                    Analytics
+
+                <a class="nav-item <?= ($currentPage == 'customers.php') ? 'active' : '' ?>" href="customers.php">
+                    <span class="nav-icon"><i data-lucide="users"></i></span>
+                    <span class="nav-text">Customers</span>
                 </a>
-                <a class="nav-item" href="settings.php">
-                    <span class="nav-icon">⚙️</span>
-                    Settings
+                </div>
+                       <div class="nav-section">
+    <p class="nav-section-title">INSIGHTS</p>
+                <a class="nav-item <?= ($currentPage == 'analytics.php') ? 'active' : '' ?>" href="analytics.php">
+                    <span class="nav-icon"><i data-lucide="line-chart"></i></span>
+                    <span class="nav-text">Analytics</span>
                 </a>
+                       </div>
+                           <div class="nav-section">
+    <p class="nav-section-title">SYSTEM</p>
+                <a class="nav-item <?= ($currentPage == 'settings.php') ? 'active' : '' ?>" href="settings.php">
+                    <span class="nav-icon"><i data-lucide="settings"></i></span>
+                    <span class="nav-text">Settings</span>
+                </a>
+                           </div>
             </nav>
+
             <div class="sidebar-footer">
                 <div class="user-info">
                     <div class="user-avatar">AD</div>
