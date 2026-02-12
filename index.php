@@ -460,6 +460,14 @@
                                 <label>Full Name</label>
                                 <input type="text" required placeholder="John Doe">
                             </div>
+                            <div class="form-group">
+                                <label>Phone Number</label>
+                                <input type="tel" required placeholder="123-456-7890">
+                            </div>
+                            <div class="form-group">
+                                <label>Date of Birth</label>
+                                <input type="date" required>
+                            </div>
                             <!-- <div class="form-group">
                                 <label>Email</label>
                                 <input type="email" required placeholder="john@example.com">
